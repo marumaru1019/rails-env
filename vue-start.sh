@@ -7,3 +7,5 @@ docker-compose run web bin/rails webpacker:install
 
 # vueのインストール
 docker-compose run web bin/rails webpacker:install:vue
+
+
