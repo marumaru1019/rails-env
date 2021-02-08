@@ -1,0 +1,39 @@
+version: '3'
+services:
+  web:
+    build: .
+    container_name: railsapp
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - 3300:3000
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+    networks:
+      - railsnet
+  db:
+    image: mysql:5.7
+    container_name: railsdb
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: railsdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 12345678
+      TZ: "Asia/Tokyo"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+      # host:container　となっているのでhost側のportをかぶらないようにする
+    restart: always
+    ports:
+      - 3400:3306
+    networks:
+      - railsnet
+
+networks:
+  railsnet:
