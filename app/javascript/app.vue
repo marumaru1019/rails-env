@@ -1,7 +1,7 @@
 <template>
   <v-app id="app">
     <Header />
-    <h1>This is app.vue</h1>
+    <h1>This is app.vue DB成功</h1>
     <p>{{ message }}</p>
     <Top />
   </v-app>
