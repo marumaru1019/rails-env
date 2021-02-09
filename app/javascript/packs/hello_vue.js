@@ -9,6 +9,7 @@ import Vue from 'vue'
 import Vuetify from 'vuetify' //追加
 import "vuetify/dist/vuetify.min.css" //追加
 import App from '../app.vue'
+import axios from 'axios'
 
 Vue.use(Vuetify) //追加
 

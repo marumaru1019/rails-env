@@ -1,2 +1,30 @@
-<%= javascript_pack_tag 'hello_vue' %>
-<%= stylesheet_pack_tag 'hello_vue' %>
+<div class="container js-booksIndex">
+    <h1 class="#f3e5f5 purple lighten-5 center">[RailsVue.js]~Bookshelf~</h1>
+    <div class="row #e3f2fd blue lighten-5">
+        <% @users.each do |book| %>
+        <div class="col s4 m6">
+            <div class="card btn">
+                <span class="card-title" v-on:click="setBookInfo(<%= book.id %>)">
+                    <%= book.name %>
+                </span>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <div class="row" v-show="bookInfoBool">
+        <div class="col s12 m12">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">
+                        {{ bookInfo.id }}
+                    </span>
+                    <div class="detail">
+                        {{ bookInfo.name }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<%= javascript_pack_tag 'user' %>
