@@ -3,6 +3,7 @@ version: 2.1
 jobs:
   test_backend:
     docker:
+    # dockerイメージで使っているrubyバージョンと一致させる
       - image: circleci/ruby:2.6.5-stretch-node
         environment:
           RAILS_ENV: test
@@ -31,7 +32,7 @@ jobs:
           working_directory: ~/repo
 
       - save_cache:
-          key: gem-cache-v1-{{ checksum "~/repo/backend/Gemfile.lock" }}
+          key: gem-cache-v1-{{ checksum "~/repo/Gemfile.lock" }}
           paths:
             - ~/repo/backend/vendor/bundle
           working_directory: ~/repo

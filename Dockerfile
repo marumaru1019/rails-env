@@ -13,10 +13,16 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install nodejs
 
+RUN apt-get update -qq && \
+    apt-get install -y build-essential \
+    libpq-dev \
+    sudo
+
 RUN yarn add node-sass
 
 RUN mkdir /app
 WORKDIR /app
+RUN mkdir -p tmp/sockets
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
