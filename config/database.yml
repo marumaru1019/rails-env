@@ -52,4 +52,6 @@ test:
 production:
   <<: *default
   database: app_production
-  url: <%= ENV['DATABASE_URL'] %>
+  # url: <%= ENV['DATABASE_URL'] %>
+  host: db
+  password: "12345678"

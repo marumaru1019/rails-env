@@ -1,5 +1,6 @@
 import Vue from 'vue/dist/vue.esm';
 import axios from 'axios';
+import App from '../app.vue'
 
 new Vue({
     el: '.js-booksIndex',
